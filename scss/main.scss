@@ -16,7 +16,7 @@ footer.footer {
     width: 100%;
 }
 p{
-    font-family:$font-family-serif;
+    font-family: $font-family-sans-serif;
     font-size: 18px;
 }
 .hero-scene{
@@ -28,7 +28,7 @@ p{
             left:0;
             width:100%;
             height:100%;
-            background-image: url(../images/FondHeroScene.jpg);
+            background-image: url("../images/marissa-grootes-u2Lp8tXIcjw-unsplash.jpg");
             background-size: cover;
             filter: brightness(0.3);
         }
@@ -43,4 +43,7 @@ p{
                     align-items: center;
                     justify-content: center;
                 }
-            }
+}
+.text-justify{
+    text-align: justify;
+}
