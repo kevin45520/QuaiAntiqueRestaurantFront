@@ -7,6 +7,11 @@ export const allRoutes = [
 
     new Route("/", "Accueil", "/Pages/home.html"),
     new Route("/gallerie", "la gallerie", "/Pages/gallerie.html"),
+    new Route("/signin", "Conexion", "/Pages/auth/signin.html"),
+    new Route("/signup", "Inscription", "/Pages/auth/signup.html"),
+    new Route("/account", "Mon compte", "/Pages/auth/account.html"),
+    new Route("/editPassword", "Modifier", "/Pages/auth/editPassword.html"),
+    
 ];
 
 
