@@ -5,7 +5,7 @@ import { allRoutes, websiteName } from "./allRoutes.js";
 
 // Création d'une route pour la page 404 (page introuvable)
 
-const route404 = new Route("404", "Page introuvable", "/pages/404.html");
+const route404 = new Route("404", "Page introuvable", "/pages/404.html",[]);
 
 
 // Fonction pour récupérer la route correspondant à une URL donnée
@@ -46,10 +46,28 @@ const getRouteByUrl = (url) => {
 const LoadContentPage = async () => {
 
   const path = window.location.pathname;
+// Récupération de l'URL actuelle
 
-  // Récupération de l'URL actuelle
+const actualRoute = getRouteByUrl(path);
 
-  const actualRoute = getRouteByUrl(path);
+//Vérifier les droits d'accès à la page
+const allRolesArray = actualRoute.authorize;
+
+if(allRolesArray.length > 0){
+  if(allRolesArray.includes("disconnected")){
+    if(isConnected()){
+      window.location.replace("/");
+    }
+  }
+  else{
+    const roleUser = getRole();
+    if(!allRolesArray.includes(roleUser)){
+      window.location.replace("/");
+    }
+  }
+}
+
+  
 
   // Récupération du contenu HTML de la route
 
@@ -58,7 +76,9 @@ const LoadContentPage = async () => {
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
 
   document.getElementById("main-page").innerHTML = html;
-
+  
+//Afficher et masquer les éléments en fonction du rôle
+showAndHideElementsForRoles();
 
   // Ajout du contenu JavaScript
 
@@ -86,6 +106,8 @@ const LoadContentPage = async () => {
 
 };
 
+//Afficher et masquer les éléments en fonction du rôle
+  showAndHideElementsForRoles();
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
 
