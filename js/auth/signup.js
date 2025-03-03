@@ -5,12 +5,16 @@ const EmailInput = document.getElementById("EmailInput");
 const PasswordInput = document.getElementById("PasswordInput");
 const ValidatePasswordInput = document.getElementById("ValidatePasswordInput");
 const btnValidation = document.getElementById("btn-Validation-inscription");
+const FormInscription = document.getElementById("FormulaireInscription");
 
 NomInput.addEventListener("keyup",ValidateForm);
 PrenomInput.addEventListener("keyup",ValidateForm);
 EmailInput.addEventListener("keyup",ValidateForm);
 PasswordInput.addEventListener("keyup",ValidateForm);
 ValidatePasswordInput.addEventListener("keyup",ValidateForm);
+
+btnValidation.addEventListener("click", InscrireUtilisateurs);
+
 
 function ValidateForm(){
     const nomOk = ValidateRequired(NomInput);
@@ -83,4 +87,41 @@ function ValidateRequired(input){
         input.classList.add("is-invalid");
         return false;
     }
+}
+function InscrireUtilisateurs(){
+let dataform = new FormData(FormInscription);
+
+
+    let myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+let raw = JSON.stringify({
+  "firstName": dataform.get("Nom"),
+  "lastName": dataform.get("Prenom"),
+  "email": dataform.get("Email"),
+  "password": dataform.get("Password")
+});
+
+let requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("http://127.0.0.1:8000/api/registration", requestOptions)
+    .then((response) => {
+        if(response.ok){
+            return response.json();
+        }
+        else{
+            alert("Une erreur s'est produite");
+        }
+    })
+    .then((result =>{
+        alert("bravo "+dataform.get("Prenom")+" , Votre compte a été créé avec succès");
+        document.location.href = "/signin";       
+      }))
+
+    .catch((error) => console.error(error));
 }
