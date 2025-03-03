@@ -26,9 +26,9 @@ function eraseCookie(name) {
 
 
 const tokenCookieName = "accesstoken";
-const RoleCookieName= "role";
+const RoleCookieName= "Roles";
 const signoutBtn = document.getElementById("signout-btn");
-
+const apiUrl = "http://127.0.0.1:8000/api/";
 
 signoutBtn.addEventListener("click", signout);
 
@@ -62,7 +62,7 @@ function showAndHideElementsForRoles(){
 
         const userConnected = isConnected();
         const role = getRole();
-        console.log(role);
+        
         let allElementsToEdit = document.querySelectorAll('[data-show]');
         allElementsToEdit.forEach(element =>{
             switch(element.dataset.show){
