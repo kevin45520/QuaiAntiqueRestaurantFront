@@ -94,3 +94,29 @@ function showAndHideElementsForRoles(){
         templHtml.textContent = text;
         return templHtml.innerHTML;
     }
+
+    function getInfosUser(){
+        let myHeaders = new Headers();
+        myHeaders.append("X-AUTH-TOKEN", getToken());
+        let requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow'
+                };
+                fetch(apiUrl+"account/me", requestOptions)
+                    .then(response =>{
+                        if(response.ok){
+                            return response.json();
+                        }
+                        else{
+                            console.log("Impossible de récupérer les informations utilisateur");
+                        }
+                    })
+                    .then(result => {
+                                return result;
+                            })
+                            .catch(error =>{
+                                console.error("erreur lors de la récupération des données utilisateur", error);
+
+                            });
+                        }
