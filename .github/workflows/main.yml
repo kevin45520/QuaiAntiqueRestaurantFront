@@ -14,7 +14,7 @@ jobs:
         username: quaiantique45520
         password: ${{ secrets.ftp_password }}
         protocol: ftps
-        port: 21
+        port: 990
         exclude: |
           **/.git*
           **/.git*/**
