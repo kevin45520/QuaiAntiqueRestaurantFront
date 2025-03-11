@@ -1,4 +1,4 @@
-on : push
+on: push
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -13,7 +13,8 @@ jobs:
         server: ftp-quaiantique45520.alwaysdata.net
         username: quaiantique45520
         password: ${{ secrets.ftp_password }}
-        protocole: ftps
+        protocol: ftps  # ✅ Corrigé : "protocol" et pas "protocole"
+        port: 21  # ✅ AlwaysData utilise le port 21 pour FTPS explicite
         exclude: |
           **/.git*
           **/.git*/**
