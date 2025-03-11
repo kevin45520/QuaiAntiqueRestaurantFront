@@ -1,6 +1,25 @@
 {
+  "name": "QuaiAntiqueRestaurantFront",
+  "version": "1.0.0",
+  "description": "projet studi",
+  "homepage": "https://github.com/kevin45520/QuaiAntiqueRestaurantFront#readme",
+  "bugs": {
+    "url": "https://github.com/kevin45520/QuaiAntiqueRestaurantFront/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevin45520/QuaiAntiqueRestaurantFront.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3"
-  }
+  },
+  "devDependencies": {}
 }
